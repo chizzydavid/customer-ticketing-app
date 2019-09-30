@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.5.6
+notifications:
+  email: false  
+services:
+  - mysql
+before_install:
+  - gem update --system
+  - gem install bundler
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS customer_ticketing_app_test;'
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+scripts:
+  - bundle install -jobs=3 -retry=3
+  - bundle exec rails db:create db:migrate RAILS_ENV=test
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
