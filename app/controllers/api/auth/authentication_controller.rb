@@ -7,7 +7,6 @@ class Api::Auth::AuthenticationController < Api::ApiController
       message: 'Login Successful',
       token: token.result 
     }, status: 200
-  
   end
 
   def auth_params
