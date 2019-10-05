@@ -1,4 +1,4 @@
-module ExceptionHandler 
+module ExceptionHandler
   extend ActiveSupport::Concern
 
   class AuthenticationError < StandardError; end
@@ -13,15 +13,15 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
   end
 
-  def bad_request e
-    render json:{ error: e.message }, status: 422
+  def bad_request (err)
+    render json: { error: err.message }, status: 422
   end
 
-  def unauthorized e
-    render json:{ error: e.message }, status: 401
+  def unauthorized (err)
+    render json: { error: err.message }, status: 401
   end
 
-  def not_found e
-    render json:{ error: e.message }, status: 404
+  def not_found (err)
+    render json: { error: err.message }, status: 404
   end
 end

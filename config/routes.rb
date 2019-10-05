@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       post 'signup', to: 'users#signup'
       post 'login', to: 'authentication#authenticate'
     end
+    resources :tickets, except: [:new, :edit]
+
+    match '*path' => 'root#unknown_route', :via => :all
   end
   root 'static#index'
   get '/*path' => 'static#index'
