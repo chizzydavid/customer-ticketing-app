@@ -1,11 +1,11 @@
-class Api::Auth::UsersController < Api::ApiController
+class Api::Auth::UsersController < Api::RootController
   skip_before_action :authenticate_request, only: :signup
 
   def signup
     user = User.create!(user_params).as_json(except: [:password_digest])
-    token = JsonWebToken.encode(user_id: user[:id])
+    token = JsonWebToken.encode(user_id: user['id'])
 
-    response = { 
+    response = {
       message: 'Account successfully created',
       user: user,
       token: token

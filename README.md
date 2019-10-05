@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chizzydavid/customer-ticketing-app.svg?branch=develop)](https://travis-ci.org/chizzydavid/customer-ticketing-app)
+
 # README
 
 This README would normally document whatever steps are necessary to get the

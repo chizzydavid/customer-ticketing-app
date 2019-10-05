@@ -6,14 +6,20 @@ class AuthorizeApiRequest
   end
   
   def call
-    { user: user }
+    user
   end
 
   private
+  
   attr_reader :headers
-
+  
   def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user = User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    # handle user not found
+    rescue ActiveRecord::RecordNotFound => e
+      raise(
+        ExceptionHandler::InvalidToken, ("Invalid token: #{e.message}")
+      )
   end
 
   def decoded_auth_token
@@ -24,6 +30,7 @@ class AuthorizeApiRequest
     if headers['Authorization'].present?
       return headers['Authorization'].split(' ').last
     end
-      raise(ExceptionHandler::MissingToken, 'No token provided')
+
+    raise(ExceptionHandler::MissingToken, 'No token provided')
   end
 end
