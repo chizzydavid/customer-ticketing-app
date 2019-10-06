@@ -6,7 +6,6 @@ ruby '2.5.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -35,12 +34,17 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '~> 0.74.0', require: false
   gem 'rspec-rails'
+  gem 'mysql2', '>= 0.4.4'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
+
+group :production do
+  gem 'pg'
+end 
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
