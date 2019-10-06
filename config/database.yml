@@ -48,7 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: customer_ticketing_app_production
-  username: customer_ticketing_app
-  password: <%= ENV['CUSTOMER_TICKETING_APP_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
+

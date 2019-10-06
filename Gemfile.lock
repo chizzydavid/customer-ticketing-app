@@ -123,6 +123,8 @@ GEM
     parallel (1.17.0)
     parser (2.6.5.0)
       ast (~> 2.4.0)
+    pg (1.1.4)
+    pg (1.1.4-x64-mingw32)
     public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -270,6 +272,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jwt
   mysql2 (>= 0.4.4)
+  pg
   puma (~> 3.11)
   rails (~> 6.0.0)
   rspec-rails
