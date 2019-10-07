@@ -2,16 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Api::TicketsController, type: :controller do
   let(:user) { create :user }
-  # let(:headers) { valid_headers(user.id) }
   let(:tickets) { create_list :ticket, 10, user: user }
   let(:ticket_id) { tickets.first.id }
-  let(:token) { AuthenticateUser.call(user.email, user.password) }
-  let (:headers) {
-    {
-      'Authorization' => token.result,
-      'Content-Type' => 'application/json'
-    }
-  }
+  let (:headers) { authenticate(user.email, user.password) }
 
   # Test suite for GET /tickets
   # describe 'GET /tickets' do
@@ -67,7 +60,7 @@ RSpec.describe Api::TicketsController, type: :controller do
   describe 'GET /tickets/:id' do
     before do
       request.headers.merge!(headers)
-      get :show, params: {id: ticket_id}
+      get :show, params: { id: ticket_id }
     end
 
     context 'when the record exists' do
@@ -94,4 +87,41 @@ RSpec.describe Api::TicketsController, type: :controller do
     end
   end
 
+
+  # Test suite for PUT /tickets/:id
+  describe 'PUT /tickets/:id' do
+    let(:params) do
+      { 
+        status: 'closed',
+        id: ticket_id
+      }
+    end
+    context 'when the record exists' do
+      before do
+        request.headers.merge!(headers)
+        put :update, params: params
+      end
+
+      it 'returns the updated record' do
+        expect(json).not_to be_empty
+        expect(json['ticket']['status']).to eq('closed')
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  # Test suite for DELETE /tickets/:id
+  describe 'DELETE /tickets/:id' do
+    before do
+      request.headers.merge!(headers)
+      delete :destroy, params: {id: ticket_id}
+    end
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end  
 end

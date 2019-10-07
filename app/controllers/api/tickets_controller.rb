@@ -1,11 +1,9 @@
 class Api::TicketsController < Api::RootController
-  before_action :set_ticket, only: [:show]
+  before_action :set_ticket, only: [:show, :update, :destroy]
 
   def index
-    puts '(((((((((((current user)))))))))))', current_user.inspect
-    tickets = current_user.tickets.order(created_at: :desc)
-    puts '**********user tickets))))))))))))', tickets
-    render json: { tickets: tickets }, status: :ok
+    @tickets = current_user.tickets.order(created_at: :desc)
+    render json: { tickets: @tickets }, status: :ok
   end
 
   def create
@@ -21,12 +19,30 @@ class Api::TicketsController < Api::RootController
   def show
     render json: { ticket: @ticket }, status: :ok
   end
+
+  def update
+    ticket = @ticket.update!(ticket_params)
+
+    if ticket
+      render json: {
+        message: 'Ticket successfully updated',
+        ticket: @ticket,
+      }, status: :ok
+    end
+  end
+
+  def destroy
+    @ticket.destroy
+    head :no_content
+  end
+
   private
 
   def ticket_params
     params.permit(
       :title,
-      :body
+      :body,
+      :status
     )
   end
 

@@ -20,4 +20,12 @@ module ControllerSpecHelper
       'Content-Type' => 'application/json'
     }
   end
+
+  def authenticate(email, password)
+    token = AuthenticateUser.call(email, password)
+    {
+      'Authorization' => token.result,
+      'Content-Type' => 'application/json'
+    }
+  end
 end
