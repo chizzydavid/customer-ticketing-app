@@ -21,6 +21,7 @@ class Api::Auth::UsersController < Api::RootController
       :last_name,
       :email,
       :password,
+      :role,
       :password_confirmation
     )
   end

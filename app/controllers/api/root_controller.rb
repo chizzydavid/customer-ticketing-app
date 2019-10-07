@@ -1,6 +1,7 @@
 module Api
   class RootController < ApplicationController
     include ExceptionHandler
+    include RoleHandler
 
     before_action :authenticate_request
     attr_reader :current_user
@@ -10,7 +11,7 @@ module Api
     def authenticate_request
       @current_user = AuthorizeApiRequest.call(request.headers).result
     end
-
+  
     def unknown_route
       render json: {
         errors: {
