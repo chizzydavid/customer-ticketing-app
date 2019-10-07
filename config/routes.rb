@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       post 'signup', to: 'users#signup'
       post 'login', to: 'authentication#authenticate'
     end
-    resources :tickets, except: [:new, :edit]
+    resources :tickets, except: [:new, :edit] do
+      resources :comments, only: [:index, :create, :destroy]
+    end
 
     match '*path' => 'root#unknown_route', :via => :all
   end
