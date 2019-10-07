@@ -2,7 +2,10 @@ class Api::TicketsController < Api::RootController
   before_action :set_ticket, only: [:show, :update, :destroy]
 
   def index
-    @tickets = current_user.tickets.order(created_at: :desc)
+    @tickets = (agent? || admin?) ? 
+                Ticket.all.order(created_at: :desc) : 
+                current_user.tickets.order(created_at: :desc)
+
     render json: { tickets: @tickets }, status: :ok
   end
 
@@ -17,7 +20,7 @@ class Api::TicketsController < Api::RootController
   end
 
   def show
-    render json: { ticket: @ticket }, status: :ok
+    render json: { ticket: @ticket, comments: @ticket.comments }, status: :ok
   end
 
   def update
@@ -47,6 +50,10 @@ class Api::TicketsController < Api::RootController
   end
 
   def set_ticket
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.includes(:comments).find(params[:id])
+
+    unless owner?(@ticket) || agent? || admin?
+      raise(ExceptionHandler::AccessDenied, 'You dont have permission to access this resource')
+    end 
   end
 end

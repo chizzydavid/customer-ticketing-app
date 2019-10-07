@@ -1,5 +1,5 @@
 class Api::CommentsController < Api::RootController
-  before_action :set_ticket, only: [:index, :create]
+  before_action :set_ticket, only: [:index, :create, :destroy]
   before_action :set_comment, only: [:destroy]
 
   def index
@@ -8,8 +8,13 @@ class Api::CommentsController < Api::RootController
   end
 
   def create
+    comment_count = @ticket.comments.count
+    if owner?(@ticket) && comment_count == 0
+      raise(ExceptionHandler::AccessDenied, 'You can comment only after an agent has commented')
+    end
+
     @comment = @ticket.comments.create!(
-      body: comment_params[:body], 
+      body: comment_params[:body],
       user_id: current_user.id
     )
 
@@ -32,10 +37,16 @@ class Api::CommentsController < Api::RootController
   end
 
   def set_ticket
-    @ticket = current_user.tickets.find(params[:ticket_id])
+    @ticket = Ticket.find(params[:ticket_id])
+    unless owner?(@ticket) || agent? || admin?
+      raise(ExceptionHandler::AccessDenied, 'You dont have permission to access this resource')
+    end
   end
 
   def set_comment
     @comment = Comment.find(params[:id])
+    unless owner?(@comment) || agent? || admin?
+      raise(ExceptionHandler::AccessDenied, 'You dont have permission to access this resource')
+    end
   end
 end
