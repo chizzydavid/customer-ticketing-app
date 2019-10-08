@@ -1,6 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
-import '../stylesheets/application.scss';
 import App from "../src/App";
 
 document.addEventListener("DOMContentLoaded", () => {
