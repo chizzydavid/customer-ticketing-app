@@ -75,9 +75,7 @@ header {
 div[data-view="home"] {
   padding-right: 8em;
 }
-#home-nav.nav-container {
-  // box-shadow: 0 8px 6px -6px black;
-}
+
 .navbar a {
   display:inline-block;
   text-decoration:none;
@@ -218,6 +216,7 @@ div[data-view="home"] a:hover {
   z-index: 800;
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   transform: translateX(100%);
@@ -232,6 +231,7 @@ div[data-view="home"] a:hover {
   visibility: visible;
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: visible;
+  backface-visibility: visible;
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);
   transform: translateX(0%);  
@@ -364,7 +364,7 @@ div[data-view="home"] a:hover {
   background:linear-gradient(
         rgba(26, 26, 26, 0.22),
         rgba(26, 26, 26, 0.22)),
-          url("~../src/img/banner.jpg");  
+          url("~../img/banner.jpg");  
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -427,7 +427,7 @@ a {
   background:linear-gradient(
         rgba(26, 26, 26, 0.88),
         rgba(26, 26, 26, 0.88)),
-          url("~../src/img/about-bg.jpg");  
+          url("~../img/about-bg.jpg");  
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
