@@ -281,7 +281,7 @@ header {
   background:linear-gradient(
         rgba(26, 26, 26, 0.22),
         rgba(26, 26, 26, 0.22)),
-          url("banner.jpg");  
+          url(image-path("banner.jpg"));
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -339,7 +339,7 @@ a {
   background:linear-gradient(
         rgba(26, 26, 26, 0.88),
         rgba(26, 26, 26, 0.88)),
-          url("about-bg.jpg");  
+          url(image-path("about-bg.jpg"));  
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -517,7 +517,7 @@ a {
   background:linear-gradient(
         rgba(26, 26, 26, 0.82),
         rgba(26, 26, 26, 0.82)),
-          url("shutterbug.jpg");  
+          url(image-path("shutterbug.jpg"));  
   background-repeat: no-repeat;
   background-size: cover;  
   flex: 2;
@@ -542,7 +542,8 @@ a {
   color: var(--dark-yellow);
   background: transparent;
   border-radius: 2px;
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
   cursor: pointer;
 }
 .form-side p.sign-link {
