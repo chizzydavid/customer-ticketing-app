@@ -21,7 +21,11 @@ export class Navbar extends Component {
 		const { isOpen } = this.state;
 
     const isAuthenticated = false;
-
+		const navbarClassname = () => {
+			let classname = 'nav-container';
+			classname = this.props.home ? `${classname}` : `page ${classname}`;
+			return classname;
+		}
     let NavbarLinks = isAuthenticated && !home ? 
     (
       <React.Fragment>
@@ -39,11 +43,17 @@ export class Navbar extends Component {
 
 		return (
 			<header>
-				<div id="header-menu-trigger" onClick={this.toggleOpen}>
-	        <span className="header-menu-text">Menu</span>
-	        <span className="header-menu-icon"></span>
-	     	</div>
 
+				<div className={navbarClassname()} >
+					<div className="brand-icon">
+						<h3>..Supportta</h3>
+					</div>
+
+					<div id="header-menu-trigger" onClick={this.toggleOpen}>
+						<span className="header-menu-text">Menu</span>
+						<span className="header-menu-icon"></span>
+					</div>
+				</div>
 
 				<nav id="menu-nav-wrap" className={isOpen ? 'open' : 'nil'}>
 					<p 

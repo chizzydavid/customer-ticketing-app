@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../shared/Navbar';
+import Navbar from '../components/shared/Navbar';
 import Landing from '../components/Landing';
-import Footer from '../shared/Footer';
+import Footer from '../components/shared/Footer';
 
 const Home = () => {
   return (
