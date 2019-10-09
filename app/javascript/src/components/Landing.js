@@ -6,12 +6,12 @@ const Landing = () => {
     <React.Fragment>
       <div id="background" className="header-text">
         <p className="sub-text">HELLO, WELCOME.</p>
-        <p className="banner-header">Experience customer delivery at its finest.</p>
+        <p className="banner-header">Experience customer support at its finest.</p>
 
         <div id="buttons">
           <Link className="start-btn" to="/sign-up">SIGN UP</Link>
-          <a className="start-btn" href="/sign-in">LOGIN</a>        
-          <p>Click to Learn More..</p>  
+          <a className="start-btn" href="/login">LOGIN</a>        
+          {/* <p>Click to Learn More..</p>   */}
         </div>
       </div>
 
@@ -32,7 +32,7 @@ const Landing = () => {
           </div>
 
           <div className="about-item" >
-            <div className=""><i className="fa fa-user"></i></div>
+            <div className=""><i className="fa fa-ticket"></i></div>
             <div>
               <h3>Create a Ticket</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet volutpat consequat ation. </p>

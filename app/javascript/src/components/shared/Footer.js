@@ -5,7 +5,7 @@ const Footer = () => {
     <React.Fragment>
       <footer>    
         <div className="" id="footer">
-          <p>&copy; 2019, <strong>Support.</strong>
+          <p>&copy; 2019, <strong>Supportta.</strong>
           <br/>
           All trademarks and registered trademarks appearing on 
           this site are the property of their respective owners.</p>      
