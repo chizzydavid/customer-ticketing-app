@@ -58,11 +58,8 @@ header {
   width: 31%;
   margin-top: 0px;
 }
-.logo {
-  padding: 0px;
-  margin-top: 0px;
-  z-index: 4;
-  text-align: center;
+#logo-nav {
+  color: white !important;
 
 }
 .logo-img {
@@ -70,7 +67,6 @@ header {
   padding: 0px;
   max-width: 240px;
 }
-
 
 
 #header-menu-trigger {
@@ -461,6 +457,12 @@ a {
 }
 
 @media screen and (max-width: 600px) {
+  .nav-container {
+    padding: 0 1.2em;
+  }
+  #header-menu-trigger {
+    right: 30px;
+  }
   .header-text {
     padding: 8em 1em 5em 1em;
   }
@@ -649,15 +651,14 @@ button[type="submit"]:focus {
   
 
 @media screen and (max-width: 769px) {
+  #auth-form h3 {
+    margin: 0;
+  }
   .container {
     margin: 100px auto 0px auto;
   }
   .form-side {
     display: none;
-  }
-  #auth-form {
-    flex: 3;
-    padding: 0 5em;
   }
   .form-wrapper {
     max-width: 500px;
@@ -669,6 +670,11 @@ button[type="submit"]:focus {
   }
 }
 
+@media screen and (max-width: 600px) {
+  #auth-form {
+    padding: 0 2em;
+  }
+}
 
 /* VIEW INBOX */
 #inbox, #view-message {

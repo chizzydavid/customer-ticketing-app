@@ -46,7 +46,7 @@ export class Navbar extends Component {
 
 				<div className={navbarClassname()} >
 					<div className="brand-icon">
-						<h3>..Supportta</h3>
+						<h3><Link id="logo-nav" to="/">..Supportta.</Link></h3>
 					</div>
 
 					<div id="header-menu-trigger" onClick={this.toggleOpen}>
