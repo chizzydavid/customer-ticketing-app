@@ -113,54 +113,57 @@ export class SignUp extends Component {
 
   render() {
     const { redirect, isLoading, authError } = this.state;
-    // if (redirect || isAuthenticated()) {
-    //   return <Redirect to="/dashboard" />;
-    // }
+    if (redirect || isAuthenticated()) {
+      return <Redirect to="/dashboard" />;
+    }
     const { email, password } = this.state.errors;
 
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container">
+        <div className="main-form-wrapper">
 
-          <div className="form-side">
-            <h2>Dont have an account?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
+          <div className="container">
 
-            <Link  to="/sign-up" className="auth-button"> Sign Up </Link>             
-            <p className="sign-link" to="/">Forgot Password?</p>
-          </div>
-       
-          <form onSubmit={this.handleSubmit} id="auth-form" encType="multipart/form-data">
-            <div className="form-wrapper">
-              <h3> Login</h3>
-              <span className="error" id="form-feedback">{authError || ''}</span>
+            <div className="form-side">
+              <h2>Dont have an account?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
 
-              <TextInput 
-                error={email || ''} 
-                handleChange={this.handleChange} 
-                type="text" 
-                name="email" 
-                placeholder="Enter email" 
-                label="Email" 
-              />
-
-              <TextInput 
-                error={password || ''} 
-                handleChange={this.handleChange} 
-                type="password" 
-                name="password" 
-                placeholder="Enter password" 
-                label="Password"
-              />
-
-              <Button
-                type="submit"
-                classname="submit"
-                text={isLoading ? 'Please wait..' : 'Submit'}
-              />
+              <Link  to="/sign-up" className="auth-button"> Sign Up </Link>             
+              <p className="sign-link" to="/">Forgot Password?</p>
             </div>
-          </form>
+        
+            <form onSubmit={this.handleSubmit} id="auth-form" encType="multipart/form-data">
+              <div className="form-wrapper">
+                <h3> Login</h3>
+                <span className="error" id="form-feedback">{authError || ''}</span>
+
+                <TextInput 
+                  error={email || ''} 
+                  handleChange={this.handleChange} 
+                  type="text" 
+                  name="email" 
+                  placeholder="Enter email" 
+                  label="Email" 
+                />
+
+                <TextInput 
+                  error={password || ''} 
+                  handleChange={this.handleChange} 
+                  type="password" 
+                  name="password" 
+                  placeholder="Enter password" 
+                  label="Password"
+                />
+
+                <Button
+                  type="submit"
+                  classname="submit"
+                  text={isLoading ? 'Please wait..' : 'Submit'}
+                />
+              </div>
+            </form>
+          </div>
         </div>
         <Footer />
       </React.Fragment>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const TextInput = (props) => {
   return (
     <React.Fragment>
-      <p className="label">{props.label}<i className="fa fa-asterisk"></i></p>
+      <p className="label">{props.label}</p>
       <input
         onChange={props.handleChange}
         type={props.type}

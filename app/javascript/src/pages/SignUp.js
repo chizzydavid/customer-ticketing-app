@@ -143,9 +143,9 @@ export class SignUp extends Component {
 
   render() {
     const { redirect, isLoading, authError } = this.state;
-    // if (redirect || isAuthenticated()) {
-    //   return <Redirect to="/dashboard" />;
-    // }
+    if (redirect || isAuthenticated()) {
+      return <Redirect to="/dashboard" />;
+    }
     const { 
       first_name, last_name, email, password, password_confirmation 
     } = this.state.errors;
@@ -153,72 +153,76 @@ export class SignUp extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container"> 
-          <div className="form-side">
-            <h2>Already a member?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
+        <div className="main-form-wrapper">
 
-            <Link  to="/login" className="auth-button"> Login </Link>          
-            <p className="sign-link" to="/">Forgot Password?</p>
-            
-          </div>   
-          <form onSubmit={this.handleSubmit} id="auth-form" encType="multipart/form-data">
-            <div className="form-wrapper">
-              <h3> Create Account</h3>
-              <span className="error" id="form-feedback">{authError || ''}</span>
+          <div className="container"> 
+            <div className="form-side">
+              <h2>Already a member?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
 
-              <TextInput 
-                error={first_name || ''} 
-                handleChange={this.handleChange} 
-                type="text" 
-                name="first_name" 
-                placeholder="First name" 
-                label="First Name" 
-              />
+              <Link  to="/login" className="auth-button"> Login </Link>          
+              <p className="sign-link" to="/">Forgot Password?</p>
+              
+            </div>   
+            <form onSubmit={this.handleSubmit} id="auth-form" encType="multipart/form-data">
+              <div className="form-wrapper">
+                <h3> Create Account</h3>
+                <span className="error" id="form-feedback">{authError || ''}</span>
 
-              <TextInput 
-                error={last_name || ''} 
-                handleChange={this.handleChange} 
-                type="text" 
-                name="last_name" 
-                placeholder="Last name" 
-                label="Last Name" 
-              />
+                <TextInput 
+                  error={first_name || ''} 
+                  handleChange={this.handleChange} 
+                  type="text" 
+                  name="first_name" 
+                  placeholder="First name" 
+                  label="First Name" 
+                />
 
-              <TextInput 
-                error={email || ''} 
-                handleChange={this.handleChange} 
-                type="text" 
-                name="email" 
-                placeholder="Enter email" 
-                label="Email" 
-              />
+                <TextInput 
+                  error={last_name || ''} 
+                  handleChange={this.handleChange} 
+                  type="text" 
+                  name="last_name" 
+                  placeholder="Last name" 
+                  label="Last Name" 
+                />
 
-              <TextInput 
-                error={password || ''} 
-                handleChange={this.handleChange} 
-                type="password" 
-                name="password" 
-                placeholder="Enter password" 
-                label="Password"
-              />
+                <TextInput 
+                  error={email || ''} 
+                  handleChange={this.handleChange} 
+                  type="text" 
+                  name="email" 
+                  placeholder="Enter email" 
+                  label="Email" 
+                />
 
-              <TextInput 
-                error={password_confirmation || ''} 
-                handleChange={this.handleChange} 
-                type="password" 
-                name="password_confirmation" 
-                placeholder="Confirm password" 
-                label="Confirm Password" 
-              />
+                <TextInput 
+                  error={password || ''} 
+                  handleChange={this.handleChange} 
+                  type="password" 
+                  name="password" 
+                  placeholder="Enter password" 
+                  label="Password"
+                />
 
-              <Button
-                type="submit"
-                classname="submit"
-                text={isLoading ? 'Please wait..' : 'Submit'}
-              />
-            </div>
-          </form>
+                <TextInput 
+                  error={password_confirmation || ''} 
+                  handleChange={this.handleChange} 
+                  type="password" 
+                  name="password_confirmation" 
+                  placeholder="Confirm password" 
+                  label="Confirm Password" 
+                />
+
+                <Button
+                  type="submit"
+                  classname="submit"
+                  text={isLoading ? 'Please wait..' : 'Submit'}
+                />
+              </div>
+            </form>
+          </div>
+
         </div>
         <Footer />
       </React.Fragment>

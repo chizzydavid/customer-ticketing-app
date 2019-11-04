@@ -5,6 +5,11 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 // import './stylesheets/application.scss';
+import setAuthUser from "./utils/setAuthUser";
+
+if (localStorage.token) {
+  setAuthUser(localStorage.token);
+}
 
 export default () => (
   <Router>
