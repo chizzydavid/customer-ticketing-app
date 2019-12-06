@@ -126,7 +126,7 @@ GEM
     pg (1.1.4)
     pg (1.1.4-x64-mingw32)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -273,7 +273,7 @@ DEPENDENCIES
   jwt
   mysql2 (>= 0.4.4)
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.0)
   rspec-rails (~> 4.0.0.beta2)
   rubocop (~> 0.74.0)
